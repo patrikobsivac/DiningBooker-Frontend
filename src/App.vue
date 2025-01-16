@@ -5,15 +5,32 @@
       <span>|</span>
       <router-link to="/about" class="nav-link">O Aplikaciji</router-link>
       <span>|</span>
-      <router-link to="/prijava" class="nav-link">Prijava</router-link>
+      <router-link to="/prijava" class="nav-link" v-if="trenutniKorisnik"
+        >Prijava</router-link
+      >
       <span>|</span>
-      <router-link to="/registracija" class="nav-link"
+      <router-link to="/registracija" class="nav-link" v-if="trenutniKorisnik"
         >Registracija</router-link
       >
+      <a v-else href="/" @click.prevent="logout()">Odjavi</a>
     </nav>
     <router-view />
   </div>
 </template>
+
+<script>
+import { trenutniKorisnik } from '@/store';
+export default {
+  data() {
+    return {
+      trenutniKorisnik,
+    };
+  },
+  methods: {
+    logout() {},
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
