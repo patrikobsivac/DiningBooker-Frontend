@@ -4,6 +4,8 @@ import AboutView from '../views/AboutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import LoginView from '../views/LoginView.vue';
 import MenuView from '../views/MenuView.vue';
+import UserView from '../views/UserView.vue';
+
 const routes = [
   {
     path: '/',
@@ -24,6 +26,11 @@ const routes = [
     path: '/izbornik',
     name: 'MenuView',
     component: MenuView,
+  },
+  {
+    path: '/korisnik',
+    name: 'UserView',
+    component: UserView,
   },
   {
     path: '/about',
