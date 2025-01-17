@@ -5,6 +5,7 @@ import RegisterView from '../views/RegisterView.vue';
 import LoginView from '../views/LoginView.vue';
 import MenuView from '../views/MenuView.vue';
 import UserView from '../views/UserView.vue';
+import BookingView from '../views/BookingView.vue';
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/korisnik',
     name: 'UserView',
     component: UserView,
+  },
+  {
+    path: '/bookiraj',
+    name: 'BookingView',
+    component: BookingView,
   },
   {
     path: '/about',
