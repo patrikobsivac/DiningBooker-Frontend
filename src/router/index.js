@@ -6,6 +6,7 @@ import LoginView from '../views/LoginView.vue';
 import MenuView from '../views/MenuView.vue';
 import UserView from '../views/UserView.vue';
 import BookingView from '../views/BookingView.vue';
+import AlertView from '../views/AlertView.vue';
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: '/bookiraj',
     name: 'BookingView',
     component: BookingView,
+  },
+  {
+    path: '/obavijest',
+    name: 'AlertView',
+    component: AlertView,
   },
   {
     path: '/about',
