@@ -69,7 +69,7 @@
             <v-date-picker></v-date-picker>
           </div>
           <button type="submit" class="btn btn-primary mt-3">
-            Rezerviraj stol
+            Bookiraj stol
           </button>
         </form>
       </div>
