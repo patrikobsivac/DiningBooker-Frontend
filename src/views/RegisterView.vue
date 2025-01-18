@@ -54,7 +54,7 @@
             v-model="formData.confirmPassword"
             type="password"
             id="confirmPassword"
-            placeholder="Ponovi lozinku"
+            placeholder="Ponovite lozinku"
           />
         </div>
         <button type="submit" class="btn">Registriraj se</button>
@@ -143,7 +143,7 @@ input:focus {
 .btn {
   width: 100%;
   padding: 0.75rem;
-  background-color: #4caf50;
+  background-color: #a72828;
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -151,6 +151,6 @@ input:focus {
   cursor: pointer;
 }
 .btn:hover {
-  background-color: #45a045;
+  background-color: #882121;
 }
 </style>

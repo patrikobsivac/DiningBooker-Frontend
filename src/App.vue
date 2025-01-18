@@ -1,11 +1,26 @@
 <template>
   <nav>
-    <router-link to="/about">O aplikaciji</router-link> |
-    <router-link v-if="!isLoggedIn" to="/prijava">Prijava</router-link> |
-    <router-link v-if="!isLoggedIn" to="/registracija"
-      >Registracija</router-link
-    >
-    <button v-else @click.prevent="logout">Odjava</button>
+    <div class="logo">
+      <router-link to="/"
+        ><img
+          alt="Logo"
+          class="shrink"
+          contain
+          src="./assets/plate.png"
+          width="40"
+      /></router-link>
+      <router-link to="#">DiningBooker</router-link>
+    </div>
+    <div class="nav-links">
+      <router-link to="/about">O aplikaciji</router-link>
+      <div class="auth-buttons">
+        <router-link v-if="!isLoggedIn" to="/prijava">Prijava</router-link>
+        <router-link v-if="!isLoggedIn" to="/registracija"
+          >Registracija</router-link
+        >
+        <button v-else @click.prevent="logout">Odjava</button>
+      </div>
+    </div>
   </nav>
   <router-view />
 </template>
@@ -46,24 +61,49 @@ export default {
 nav {
   padding: 20px;
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #181a1b;
 
-  a,
-  button {
-    font-weight: 600;
-    color: #333;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
+  .logo {
+    display: flex;
+    align-items: center;
 
-    &.router-link-exact-active {
-      color: #1e90ff;
+    img {
+      height: 40px;
+      margin-right: 10px;
     }
 
-    &:hover {
-      color: #555;
+    a {
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 20px;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+
+    a {
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      margin-right: 20px;
+
+      &.router-link-exact-active {
+        color: #1e90ff;
+      }
+
+      &:hover {
+        color: #555;
+      }
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
     }
   }
 }

@@ -2,18 +2,17 @@
   <div class="about">
     <h1>O aplikaciji</h1>
     <div id="description-container">
-      **DiningBooker** je jedinstvena aplikacija koja pruža uslugu za brzu i
+      DiningBooker je jedinstvena aplikacija koja pruža uslugu za brzu i
       jednostavnu rezervaciju stolova u gradskim restoranima. Naš je zadatak
       učiniti Vaše iskustvo traženja pravog ugostiteljskog objekta za obiteljsku
       večeru, poslovni sastanak ili večer sa dragim prijateljima i obitelji.
-      Zahvaljujući **DiningBooker** - novoj aplikaciji, možete si pronaći
-      slobodne termine, odabrati restorane koji vam se najviše sviđaju i
-      rezervirati svoj stol u nekoliko klikova. DiningBooker aplikacija će Vas
-      voditi do najboljeg za sve kojima je stalo do restorana s dobrim pogledom
-      na more, ugodan ambijent za dvoje ili restoran s bogatom ponudom
-      jelovnika. Naš sustav obavijesti nikada neće dopustiti da propustite svoju
-      rezervaciju, a naš tim za korisnike uvijek je dostupan za odgovore na Vaša
-      pitanja.
+      Zahvaljujući DiningBooker, možete si pronaći slobodne termine, odabrati
+      restorane koji vam se najviše sviđaju i rezervirati svoj stol u nekoliko
+      klikova. DiningBooker aplikacija će Vas voditi do najboljeg za sve kojima
+      je stalo do restorana s dobrim pogledom na more, ugodan ambijent za dvoje
+      ili restoran s bogatom ponudom jelovnika. Naš sustav obavijesti nikada
+      neće dopustiti da propustite svoju rezervaciju, a naš tim za korisnike
+      uvijek je dostupan za odgovore na Vaša pitanja.
     </div>
     <button @click="goToHome">POVRATAK NA POČETNU</button>
   </div>
@@ -39,6 +38,11 @@ export default {
   margin: 0 auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; /* Centriranje teksta unutar okvira */
 }
 
 h1 {
@@ -55,7 +59,7 @@ h1 {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #a72828;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -66,6 +70,6 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #882121;
 }
 </style>
