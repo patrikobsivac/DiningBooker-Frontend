@@ -1,60 +1,63 @@
 <template>
-  <div>
+  <div class="container">
     <h1>DiningBooker</h1>
-    <div>
+
+    <div class="button-group">
       <a href="/obavijest">
-        <button type="button" class="btn-main mt-3">Obavijesti</button>
+        <button type="button" class="btn btn-success mt-3">Obavijesti</button>
       </a>
-      <a href="/posude">
-        <button type="button" class="btn-main mt-3">Menu</button>
+
+      <a href="/izbornik">
+        <button type="button" class="btn btn-success mt-3">Izbornik</button>
       </a>
+
       <a href="/bookiraj">
-        <button type="button" class="btn-main mt-3">Rezervacija</button>
+        <button type="button" class="btn btn-success mt-3">
+          Bookiraj stol
+        </button>
       </a>
-      <br />
-      <h1>Hvala što ste s nama!</h1>
     </div>
+
+    <footer>
+      <h2>Hvala što ste odabrali nas!</h2>
+    </footer>
   </div>
 </template>
+
+<style scoped>
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #a72828;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #882121;
+}
+
+footer h2 {
+  margin-top: 40px;
+  font-style: italic;
+}
+</style>
 
 <script>
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
 };
 </script>
-
-<style>
-.container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 40px;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.btn-main {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btn-main:hover {
-  background-color: #0056b3;
-}
-
-h1 {
-  text-align: center;
-}
-
-button {
-  margin-top: 10px;
-}
-</style>

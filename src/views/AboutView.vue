@@ -2,17 +2,18 @@
   <div class="about">
     <h1>O aplikaciji</h1>
     <div id="description-container">
-      **DiningBooker** je jedinstvena usluga za brzu i jednostavnu rezervaciju
-      stolova u gradskim restoranima. Naša je misija učiniti Vaše iskustvo
-      traženja pravog objekta za obiteljsku večeru, poslovni sastanak ili večer
-      u gradu jednostavnom i laganom vježbom. Zahvaljujući **DiningBooker** -
-      novoj aplikaciji, možete si pronaći slobodne termine, odabrati restorane
-      koji vam se najviše sviđaju i rezervirati svoj stol u nekoliko klikova.
-      DiningBooker će Vas voditi do najboljeg za sve kojima je stalo do
-      restorana s dobrim pogledom na more, ugodan ambijent za dvoje ili restoran
-      s bogatom ponudom jelovnika. Pitanje s U međuvremenu, naš sustav
-      obavijesti nikada neće dopustiti da propustite svoju rezervaciju, a naš
-      tim za korisnike uvijek je dostupan za odgovore na Vaša pitanja.
+      **DiningBooker** je jedinstvena aplikacija koja pruža uslugu za brzu i
+      jednostavnu rezervaciju stolova u gradskim restoranima. Naš je zadatak
+      učiniti Vaše iskustvo traženja pravog ugostiteljskog objekta za obiteljsku
+      večeru, poslovni sastanak ili večer sa dragim prijateljima i obitelji.
+      Zahvaljujući **DiningBooker** - novoj aplikaciji, možete si pronaći
+      slobodne termine, odabrati restorane koji vam se najviše sviđaju i
+      rezervirati svoj stol u nekoliko klikova. DiningBooker aplikacija će Vas
+      voditi do najboljeg za sve kojima je stalo do restorana s dobrim pogledom
+      na more, ugodan ambijent za dvoje ili restoran s bogatom ponudom
+      jelovnika. Naš sustav obavijesti nikada neće dopustiti da propustite svoju
+      rezervaciju, a naš tim za korisnike uvijek je dostupan za odgovore na Vaša
+      pitanja.
     </div>
     <button @click="goToHome">POVRATAK NA POČETNU</button>
   </div>
