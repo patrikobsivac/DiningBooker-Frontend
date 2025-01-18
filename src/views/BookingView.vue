@@ -1,76 +1,74 @@
 <template>
-  <div class="container">
+  <div class="wrapper">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h1>Odaberi stol</h1>
-        <form @submit.prevent="onSubmit">
+        <h1>Rezervacija stola</h1>
+        <form @submit.prevent="handleSubmit">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label for="inputName">Ime</label>
+                <label for="firstName">Ime</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="inputName"
-                  v-model="ime"
-                  placeholder="Enter name"
+                  id="firstName"
+                  v-model="firstName"
+                  placeholder="Unesite ime"
                   required
                 />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="inputSurename">Prezime</label>
+                <label for="lastName">Prezime</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="inputSurename"
-                  v-model="prezime"
-                  placeholder="Unesi prezime"
+                  id="lastName"
+                  v-model="lastName"
+                  placeholder="Unesite prezime"
                   required
                 />
               </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="inputEmail">Email adresa</label>
+            <label for="emailAddress">Email</label>
             <input
               type="email"
               class="form-control"
-              id="inputEmail"
-              v-model="email"
-              placeholder="Unesi email"
+              id="emailAddress"
+              v-model="emailAdresa"
+              placeholder="Unesite email"
               required
             />
           </div>
           <div class="form-group">
-            <label for="phoneNumbr">Broj Mobitela</label>
+            <label for="mobileNumber">Mobitel</label>
             <input
               type="tel"
               class="form-control"
-              id="phoneNumbr"
+              id="mobileNumber"
               v-model="brojTelefona"
-              placeholder="Unesi broj mobitela"
+              placeholder="Unesite broj mobitela"
               required
             />
           </div>
           <div class="form-group">
-            <label for="brOsoba">Broj Osoba</label>
+            <label for="numberOfGuests">Broj Osoba</label>
             <input
               type="number"
               class="form-control"
-              id="brOsoba"
-              v-model="brojOsoba"
-              placeholder="Unesi Broj Osoba"
+              id="numberOfGuests"
+              v-model="brojGosti"
+              placeholder="Unesite broj osoba"
               required
             />
           </div>
           <div>
             <v-date-picker></v-date-picker>
           </div>
-          <button type="submit" class="btn btn-primary mt-3">
-            Bookiraj stol
-          </button>
+          <button type="submit" class="btn btn-success mt-3">Bookiraj</button>
         </form>
       </div>
     </div>
@@ -81,28 +79,28 @@
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { defineComponent } from 'vue';
 import { rezervacija } from '@/store';
-export default {
+export default defineComponent({
   data() {
     return {
       ime: '',
       prezime: '',
-      email: '',
+      emailAdresa: '',
       brojTelefona: '',
-      brojOsoba: 0,
+      brojGosti: 1,
     };
   },
   methods: {
-    onSubmit() {
+    handleSubmit() {
       const newRezervacija = {
         ime: this.ime,
         prezime: this.prezime,
-        email: this.email,
-        brojTelefona: this.brojTelefona,
-        brojOsoba: this.brojOsoba,
+        email: this.emailAdresa,
+        telefon: this.brojTelefona,
+        gosti: this.brojGosti,
       };
       rezervacija.push(newRezervacija);
-      console.log(rezervacija);
+      console.log('Nova rezervacija:', newRezervacija);
     },
   },
-};
+});
 </script>
