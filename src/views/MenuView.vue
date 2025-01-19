@@ -29,9 +29,8 @@
         :key="index"
         class="menu-item"
       >
-        <h3>{{ item.name }}</h3>
-        <p>{{ item.description }}</p>
-        <p class="price">{{ item.price }}€</p>
+        <h3>{{ item.naziv }}</h3>
+        <p class="price">{{ item.cijena }}€</p>
       </div>
     </div>
     <div v-else>
@@ -69,9 +68,13 @@ export default {
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #e9e8eb;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .tab-buttons {
@@ -105,7 +108,7 @@ export default {
   width: calc(33.33% - 20px);
   margin: 10px;
   border: 1px solid #ddd;
-  padding: 15px;
+  padding: 12px;
   border-radius: 5px;
   background-color: white;
   transition: transform 0.3s ease;
@@ -118,5 +121,9 @@ export default {
 .price {
   font-weight: bold;
   color: #007bff;
+}
+
+h2 {
+  color: black;
 }
 </style>
