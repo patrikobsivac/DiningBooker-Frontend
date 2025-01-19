@@ -136,7 +136,7 @@ input {
   border: none;
   border-radius: 4px;
   background-color: #ffffff;
-  color: #ffffff;
+  color: #000000;
 }
 input:focus {
   outline: 2px solid #af4c4c;

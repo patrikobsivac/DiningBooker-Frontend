@@ -47,6 +47,7 @@ export default {
         (korisnik) => korisnik.email === this.username
       );
       if (foundKorisnik && foundKorisnik.password === this.password) {
+        console.log('Pronađen korisnik:', foundKorisnik);
         trenutniKorisnik.authenticated = true;
         trenutniKorisnik.email = foundKorisnik.email;
         trenutniKorisnik.id = foundKorisnik.id;
@@ -54,7 +55,6 @@ export default {
         trenutniKorisnik.ime = foundKorisnik.ime;
         trenutniKorisnik.prezime = foundKorisnik.prezime;
         console.log(trenutniKorisnik);
-        console.log(korisnik);
         this.$router.replace({ name: 'UserView' });
       } else {
         console.log('Nevažeće username ili lozinka');
@@ -106,7 +106,7 @@ input {
   border: none;
   border-radius: 4px;
   background-color: #ffffff;
-  color: #ffffff;
+  color: #000000;
 }
 input:focus {
   outline: 2px solid #a72828;

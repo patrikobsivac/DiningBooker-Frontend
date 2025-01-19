@@ -4,7 +4,7 @@ var trenutniKorisnik = {
   prezime: '',
   email: '',
   brojTelefona: '',
-  authenticated: '',
+  authenticated: false,
 };
 
 var korisnik = [
