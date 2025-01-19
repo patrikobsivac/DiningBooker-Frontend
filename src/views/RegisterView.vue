@@ -88,9 +88,11 @@ export default {
           prezime: this.formData.prezime,
           password: this.formData.password,
           email: this.formData.email,
-          password: this.formData.password,
+          brojTelefona: this.formData.brojTelefona,
         };
-        user.push(newKorisnik);
+        korisnik.push(newKorisnik);
+        alert('Registracija uspješna!');
+        this.$router.replace({ name: 'LoginView' });
       }
       console.log(korisnik);
     },
@@ -104,10 +106,9 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1e1e2f;
 }
 .register-box {
-  background-color: #2b2b3c;
+  background-color: #e9e8eb;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -115,7 +116,7 @@ export default {
   max-width: 500px;
 }
 .title {
-  color: #ffffff;
+  color: #000000;
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -126,7 +127,7 @@ export default {
 label {
   display: block;
   font-size: 0.875rem;
-  color: #d1d1e0;
+  color: #000000;
   margin-bottom: 0.25rem;
 }
 input {
@@ -134,11 +135,11 @@ input {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
-  background-color: #383850;
+  background-color: #ffffff;
   color: #ffffff;
 }
 input:focus {
-  outline: 2px solid #4caf50;
+  outline: 2px solid #af4c4c;
 }
 .btn {
   width: 100%;

@@ -43,7 +43,7 @@ export default {
   methods: {
     login() {
       console.log('Prijava', this.username);
-      const foundKorisnik = user.find(
+      const foundKorisnik = korisnik.find(
         (korisnik) => korisnik.email === this.username
       );
       if (foundKorisnik && foundKorisnik.password === this.password) {
@@ -55,7 +55,7 @@ export default {
         trenutniKorisnik.prezime = foundKorisnik.prezime;
         console.log(trenutniKorisnik);
         console.log(korisnik);
-        this.$router.replace({ name: 'korisnički prikaz' });
+        this.$router.replace({ name: 'UserView' });
       } else {
         console.log('Nevažeće username ili lozinka');
       }
@@ -70,10 +70,9 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1e1e2f;
 }
 .login-box {
-  background-color: #2b2b3c;
+  background-color: #e9e8eb;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -82,12 +81,12 @@ export default {
   text-align: center;
 }
 .title {
-  color: #ffffff;
+  color: #000000;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
 .subtitle {
-  color: #a9a9b3;
+  color: #1d1d1e;
   font-size: 1rem;
   margin-bottom: 1.5rem;
 }
@@ -98,7 +97,7 @@ export default {
 label {
   display: block;
   font-size: 0.875rem;
-  color: #d1d1e0;
+  color: #000000;
   margin-bottom: 0.25rem;
 }
 input {
@@ -106,7 +105,7 @@ input {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
-  background-color: #383850;
+  background-color: #ffffff;
   color: #ffffff;
 }
 input:focus {
