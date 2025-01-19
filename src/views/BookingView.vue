@@ -101,15 +101,20 @@ export default defineComponent({
 <style scoped>
 .booking-wrapper {
   padding: 40px 20px;
-  background-color: #f4f4f4;
+  background-color: #f8f8f8;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .form-container {
-  background-color: #ffffff;
+  background-color: #ebebeb;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);

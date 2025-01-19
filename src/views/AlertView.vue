@@ -26,7 +26,7 @@ export default {
 
 <style>
 .alert {
-  background-color: #121212e9;
+  background-color: #262626e9;
   color: white;
   padding: 40px;
   max-width: 800px;
