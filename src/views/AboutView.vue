@@ -31,7 +31,7 @@ export default {
 
 <style>
 .about {
-  background-color: #121212;
+  background-color: #121212e9;
   color: white;
   padding: 40px;
   max-width: 800px;
@@ -42,7 +42,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center; /* Centriranje teksta unutar okvira */
+  text-align: center;
 }
 
 h1 {

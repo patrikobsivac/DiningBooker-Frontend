@@ -50,6 +50,14 @@ button:hover {
   background-color: #882121;
 }
 
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  color: black;
+}
+
 footer h2 {
   margin-top: 40px;
   font-style: italic;

@@ -9,27 +9,44 @@
         <li><strong>Subota - Nedjelja:</strong> 12:00h - 20:00h</li>
       </ul>
     </div>
+    <button @click="goToHome">POVRATAK NA POČETNU</button>
   </div>
 </template>
 
+<script>
+export default {
+  name: 'AlertView',
+  methods: {
+    goToHome() {
+      this.$router.push('/');
+    },
+  },
+};
+</script>
+
 <style>
 .alert {
-  border: 1px solid #ccc;
+  background-color: #121212e9;
+  color: white;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
   border-radius: 8px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  max-width: 400px;
-  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
 h1 {
-  color: #333;
-  font-size: 24px;
+  color: #d92222;
+  font-size: 25px;
 }
 
 h2 {
-  color: #555;
+  color: #ffffff;
   font-size: 20px;
   margin-top: 10px;
 }
@@ -41,11 +58,11 @@ ul {
 
 li {
   font-size: 16px;
-  color: #666;
+  color: #ffffff;
   margin: 5px 0;
 }
 
 strong {
-  color: #333;
+  color: #ffffffdd;
 }
 </style>
