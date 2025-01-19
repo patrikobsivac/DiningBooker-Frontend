@@ -3,19 +3,19 @@
     <h1>DiningBooker</h1>
 
     <div class="button-group">
-      <a href="/obavijest">
+      <router-link to="/obavijest">
         <button type="button" class="btn btn-success mt-3">Obavijesti</button>
-      </a>
+      </router-link>
 
-      <a href="/izbornik">
+      <router-link to="/izbornik">
         <button type="button" class="btn btn-success mt-3">Izbornik</button>
-      </a>
+      </router-link>
 
-      <a href="/bookiraj">
+      <router-link to="/bookiraj">
         <button type="button" class="btn btn-success mt-3">
           Bookiraj stol
         </button>
-      </a>
+      </router-link>
     </div>
 
     <footer>
