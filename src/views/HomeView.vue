@@ -4,7 +4,7 @@
     <hr>
     <br>
     <v-row>
-      <v-col v-for="food in foods" :key="food.id" cols="12" md="4">
+      <v-col cols="12" md="6" v-for="food in foods.slice(0, 2)" :key="food.id">
         <v-card class="mx-auto" max-width="350" color="#e9e8eb">
           <v-img 
             :src="food.imageUrl" 
@@ -13,14 +13,32 @@
             @click="setStates(food.id)">
           </v-img>
           <v-card-title>{{ food.foodName }}</v-card-title>
-          <v-card-actions> 
+          <v-card-actions>
             <v-spacer></v-spacer>
           </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
+    <v-row justify="center">
+      <v-col cols="12" md="6">
+        <v-card class="mx-auto" max-width="350" color="#e9e8eb">
+          <v-img 
+            :src="foods[2].imageUrl" 
+            height="180px" 
+            class="image-border" 
+            @click="setStates(foods[2].id)">
+          </v-img>
+          <v-card-title>{{ foods[2].foodName }}</v-card-title>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+
   </v-container>
 </template>
+
 
 <script>
 import { mapMutations } from "vuex";
@@ -35,13 +53,13 @@ export default {
       },
       {
         id: 2,
-        foodName: "Menu",
-        imageUrl: "https://static.vecteezy.com/system/resources/thumbnails/032/483/662/small_2x/food-menu-food-recipe-logo-design-template-spoon-fork-with-old-paper-scroll-vintage-letter-illustration-vector.jpg"
+        foodName: "Radno Vrijeme",
+        imageUrl: "https://www.shutterstock.com/image-vector/clock-icon-trendy-flat-style-600nw-674379841.jpg"
       },
       {
         id: 3,
-        foodName: "Radno vrijeme",
-        imageUrl: "https://www.shutterstock.com/image-vector/clock-icon-trendy-flat-style-600nw-674379841.jpg"
+        foodName: "Menu",
+        imageUrl: "https://static.vecteezy.com/system/resources/thumbnails/032/483/662/small_2x/food-menu-food-recipe-logo-design-template-spoon-fork-with-old-paper-scroll-vintage-letter-illustration-vector.jpg"
       }
     ]
   }),
