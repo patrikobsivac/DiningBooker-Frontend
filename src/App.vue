@@ -40,3 +40,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+#app {
+  background-image: url("../src/assets/bg.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+</style>
