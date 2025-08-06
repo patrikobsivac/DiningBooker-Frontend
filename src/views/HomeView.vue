@@ -9,7 +9,7 @@
           <v-img 
             :src="food.imageUrl" 
             height="180px" 
-            class="image-border" 
+            class="image-border hoverable-image" 
             @click="setStates(food.id)">
           </v-img>
           <v-card-title>{{ food.foodName }}</v-card-title>
@@ -25,7 +25,7 @@
           <v-img 
             :src="foods[2].imageUrl" 
             height="180px" 
-            class="image-border" 
+            class="image-border hoverable-image" 
             @click="setStates(foods[2].id)">
           </v-img>
           <v-card-title>{{ foods[2].foodName }}</v-card-title>
@@ -53,35 +53,51 @@ export default {
       },
       {
         id: 2,
-        foodName: "Radno Vrijeme",
-        imageUrl: "https://www.shutterstock.com/image-vector/clock-icon-trendy-flat-style-600nw-674379841.jpg"
+        foodName: "Radno vrijeme",
+        imageUrl: "https://cdn-icons-png.flaticon.com/512/4305/4305432.png"
       },
       {
         id: 3,
         foodName: "Menu",
-        imageUrl: "https://static.vecteezy.com/system/resources/thumbnails/032/483/662/small_2x/food-menu-food-recipe-logo-design-template-spoon-fork-with-old-paper-scroll-vintage-letter-illustration-vector.jpg"
+        imageUrl: "https://previews.123rf.com/images/sohell/sohell2201/sohell220101557/181425734-food-menu-restaurant-icon-design-vector-template-illustration.jpg"
       }
     ]
   }),
-   methods: {
-    ...mapMutations({
-      setFoodIme: "setFoodIme",
-    }),
-    formatThousands(res) {
-      return new Intl.NumberFormat('en-US').format(res);
-    },
+  methods: {
+    ...mapMutations(["setFoodId"]),
     setStates(foodId) {
-      const selectedFood = this.foods.find(food => food.id === foodId);
-      this.setFoodIme(selectedFood.foodName);
-      this.$router.push({ name: 'foodDetails', params: { id: foodId } });
+      this.setFoodId(foodId);
+    },
+    goToPage(foodName) {
+      switch (foodName) {
+        case "Obavijest":
+          this.$router.push("/#");
+          break;
+        case "Radno vrijeme":
+          this.$router.push("/#");
+          break;
+        case "Menu":
+          this.$router.push("/#");
+          break;
+        default:
+          console.log("Nepoznata stranica:", foodName);
+      }
     }
   }
-};
+}
 </script>
+
 
 <style scoped>
 .image-border {
   border: 2px solid #000; 
   border-radius: 5px;
+}
+.hoverable-image {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.hoverable-image:hover {
+  transform: scale(1.05);
 }
 </style>

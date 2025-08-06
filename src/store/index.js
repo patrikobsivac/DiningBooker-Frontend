@@ -13,8 +13,12 @@ export default new Vuex.Store({
     phone: '',
     email: '',
     comments: '',
+    foodId: null,
   },
   mutations: {
+    setFoodId(state, id) {
+      state.foodId = id;
+    },
     setNameSurname(state, name) {
       state.firstName = name;
     },
