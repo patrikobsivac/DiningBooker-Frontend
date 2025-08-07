@@ -6,11 +6,10 @@
     <div class="welcome-line"></div>
     <br>
     <v-row>
-      <v-col cols="12" md="6" v-for="food in foods.slice(0, 2)" :key="food.id">
+      <v-col cols="12" md="6" v-for="food in foods.slice(0, 2)" :key="food.id" class="pa-3">
         <v-card
-          class="mx-auto hoverable-card rounded-lg"
+          class="mx-auto hoverable-card rounded-lg card-bg"
           max-width="350"
-          color="#e9e8eb"
           elevation="6"
           @click="goToPage(food.foodName)"
           ripple
@@ -28,11 +27,10 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="6" class="pa-3">
         <v-card
-          class="mx-auto hoverable-card rounded-lg"
+          class="mx-auto hoverable-card rounded-lg card-bg"
           max-width="350"
-          color="#e9e8eb"
           elevation="6"
           @click="goToPage(foods[2].foodName)"
           ripple
@@ -76,23 +74,23 @@ export default {
     ]
   }),
   methods: {
-  ...mapMutations(["setFoodId"]),
-  setStates(foodId) {
-    this.setFoodId(foodId);
-  },
-  goToPage(foodName) {
-    switch (foodName) {
-      case "Obavijest":
-        this.$router.push("#");
-        break;
-      case "Radno vrijeme":
-        this.$router.push("#");
-        break;
-      case "Jelovnik":
-        this.$router.push("#");
-        break;
-      default:
-        console.warn("Nepoznato:", foodName);
+    ...mapMutations(["setFoodId"]),
+    setStates(foodId) {
+      this.setFoodId(foodId);
+    },
+    goToPage(foodName) {
+      switch (foodName) {
+        case "Obavijest":
+          this.$router.push("#");
+          break;
+        case "Radno vrijeme":
+          this.$router.push("#");
+          break;
+        case "Jelovnik":
+          this.$router.push("#");
+          break;
+        default:
+          console.warn("Nepoznato:", foodName);
       }
     }
   }
@@ -100,18 +98,29 @@ export default {
 </script>
 
 <style scoped>
-.image-border {
-  border: 2px solid #000; 
-  border-radius: 5px;
+v-container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .hoverable-card {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .hoverable-card:hover {
-  transform: scale(1.03);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.image-border {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border: none;
 }
 
 .text-center-card {
@@ -119,7 +128,12 @@ export default {
   justify-content: center;
   display: flex;
   font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.card-bg {
+  background-color: #f8f8fa !important;
 }
 
 .welcome-title {
