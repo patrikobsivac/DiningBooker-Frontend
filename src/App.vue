@@ -5,24 +5,25 @@
         <v-btn href="/" class="mr-2">
           <v-img alt="Logo" class="shrink" contain src="./assets/dish.png" width="40"/>
         </v-btn>
-
         <v-btn text color="grey lighten-8" class="text-h6">
-          DinningBooker
+          Dinning Booker
         </v-btn>
       </div>
-    
-      <v-col align="right">
-        <v-btn text class="pa-3" color="grey lighten-6" to="#" v-if="!isUserAuthenticated">
+      <v-spacer />
+      <div class="d-flex align-center">
+        <v-btn text class="pa-3" color="grey lighten-6" to="/about">
+          O nama
+        </v-btn>
+        <v-btn text class="pa-3" color="grey lighten-6" to="/login" v-if="!isUserAuthenticated">
           Login
         </v-btn>
-        &nbsp; | 
-        <v-btn text class="pa-3" color="grey lighten-6" to="#" v-if="!isUserAuthenticated">
+        <v-btn text class="pa-3" color="grey lighten-6" to="/register" v-if="!isUserAuthenticated">
           Register
         </v-btn>
         <v-btn text class="pa-3" color="red lighten-8" v-else @click="handleLogout" href="/">
           Logout
         </v-btn>
-      </v-col>
+      </div>
     </v-app-bar>
     <v-main>
       <router-view/>
@@ -47,5 +48,6 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 100vh;
 }
 </style>

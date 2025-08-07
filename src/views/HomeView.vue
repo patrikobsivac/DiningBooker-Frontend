@@ -8,7 +8,7 @@
     <v-row>
       <v-col cols="12" md="6" v-for="food in foods.slice(0, 2)" :key="food.id" class="pa-3">
         <v-card
-          class="mx-auto hoverable-card rounded-lg card-bg"
+          class="mx-auto hoverable-card rounded-lg card-bg fade-in-up"
           max-width="350"
           elevation="6"
           @click="goToPage(food.foodName)"
@@ -29,7 +29,8 @@
     <v-row justify="center">
       <v-col cols="12" md="6" class="pa-3">
         <v-card
-          class="mx-auto hoverable-card rounded-lg card-bg"
+          class="mx-auto hoverable-card rounded-lg card-bg fade-in-up"
+          style="animation-delay: 0.4s;"
           max-width="350"
           elevation="6"
           @click="goToPage(foods[2].foodName)"
@@ -160,12 +161,17 @@ v-container {
   border-radius: 4px;
 }
 
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.9s ease-out forwards;
+}
+
 @keyframes fadeInUp {
-  from {
+  0% {
     opacity: 0;
     transform: translateY(20px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
