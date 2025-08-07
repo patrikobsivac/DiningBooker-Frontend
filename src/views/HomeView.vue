@@ -1,18 +1,26 @@
 <template>
   <v-container>
-    <h1>Dobrodošli!</h1>
-    <hr>
+    <div style="text-align: center;">
+    <h1 class="welcome-title">Dobrodošli!</h1>
+    </div>
+    <div class="welcome-line"></div>
     <br>
     <v-row>
       <v-col cols="12" md="6" v-for="food in foods.slice(0, 2)" :key="food.id">
-        <v-card class="mx-auto" max-width="350" color="#e9e8eb">
+        <v-card
+          class="mx-auto hoverable-card rounded-lg"
+          max-width="350"
+          color="#e9e8eb"
+          elevation="6"
+          @click="goToPage(food.foodName)"
+          ripple
+        >
           <v-img 
             :src="food.imageUrl" 
             height="180px" 
-            class="image-border hoverable-image" 
-            @click="setStates(food.id)">
-          </v-img>
-          <v-card-title>{{ food.foodName }}</v-card-title>
+            class="image-border"
+          />
+          <v-card-title class="text-center-card">{{ food.foodName }}</v-card-title>
           <v-card-actions>
             <v-spacer></v-spacer>
           </v-card-actions>
@@ -21,14 +29,20 @@
     </v-row>
     <v-row justify="center">
       <v-col cols="12" md="6">
-        <v-card class="mx-auto" max-width="350" color="#e9e8eb">
+        <v-card
+          class="mx-auto hoverable-card rounded-lg"
+          max-width="350"
+          color="#e9e8eb"
+          elevation="6"
+          @click="goToPage(foods[2].foodName)"
+          ripple
+        >
           <v-img 
             :src="foods[2].imageUrl" 
             height="180px" 
-            class="image-border hoverable-image" 
-            @click="setStates(foods[2].id)">
-          </v-img>
-          <v-card-title>{{ foods[2].foodName }}</v-card-title>
+            class="image-border"
+          />
+          <v-card-title class="text-center-card">{{ foods[2].foodName }}</v-card-title>
           <v-card-actions>
             <v-spacer></v-spacer>
           </v-card-actions>
@@ -37,7 +51,6 @@
     </v-row>
   </v-container>
 </template>
-
 
 <script>
 import { mapMutations } from "vuex";
@@ -57,46 +70,90 @@ export default {
       },
       {
         id: 3,
-        foodName: "Menu",
+        foodName: "Jelovnik",
         imageUrl: "https://previews.123rf.com/images/sohell/sohell2201/sohell220101557/181425734-food-menu-restaurant-icon-design-vector-template-illustration.jpg"
       }
     ]
   }),
   methods: {
-    ...mapMutations(["setFoodId"]),
-    setStates(foodId) {
-      this.setFoodId(foodId);
-    },
-    goToPage(foodName) {
-      switch (foodName) {
-        case "Obavijest":
-          this.$router.push("/#");
-          break;
-        case "Radno vrijeme":
-          this.$router.push("/#");
-          break;
-        case "Menu":
-          this.$router.push("/#");
-          break;
-        default:
-          console.log("Nepoznata stranica:", foodName);
+  ...mapMutations(["setFoodId"]),
+  setStates(foodId) {
+    this.setFoodId(foodId);
+  },
+  goToPage(foodName) {
+    switch (foodName) {
+      case "Obavijest":
+        this.$router.push("#");
+        break;
+      case "Radno vrijeme":
+        this.$router.push("#");
+        break;
+      case "Jelovnik":
+        this.$router.push("#");
+        break;
+      default:
+        console.warn("Nepoznato:", foodName);
       }
     }
   }
 }
 </script>
 
-
 <style scoped>
 .image-border {
   border: 2px solid #000; 
   border-radius: 5px;
 }
-.hoverable-image {
+
+.hoverable-card {
   transition: transform 0.3s ease;
   cursor: pointer;
 }
-.hoverable-image:hover {
-  transform: scale(1.05);
+
+.hoverable-card:hover {
+  transform: scale(1.03);
+}
+
+.text-center-card {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.welcome-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+  color: #2c3e50;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out;
+}
+
+.welcome-line {
+  width: 100px;
+  height: 4px;
+  background-color: #2c3e50;
+  margin: 0 auto 20px auto;
+  border-radius: 4px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
