@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: "AboutUs",
+  name: "AboutView",
   data() {
     return {
       showCard: false,

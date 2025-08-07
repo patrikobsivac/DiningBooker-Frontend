@@ -85,7 +85,7 @@ export default {
           this.$router.push("#");
           break;
         case "Radno vrijeme":
-          this.$router.push("#");
+          this.$router.push("/alert");
           break;
         case "Jelovnik":
           this.$router.push("#");

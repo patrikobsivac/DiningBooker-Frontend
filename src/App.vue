@@ -6,7 +6,7 @@
           <v-img alt="Logo" class="shrink" contain src="./assets/dish.png" width="40"/>
         </v-btn>
         <v-btn text color="grey lighten-8" class="text-h6">
-          Dinning Booker
+          Dining Booker
         </v-btn>
       </div>
       <v-spacer />
