@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "AlertView",
+  name: "WorkingHoursView",
 };
 </script>
 
