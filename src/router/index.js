@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import WorkingHoursView from '../views/WorkingHoursView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
+import UserView from '../views/UserView.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,6 +27,11 @@ const routes = [
     path: '/radnovrijeme',
     name: 'WorkingHoursView',
     component: WorkingHoursView
+  },
+  {
+    path: '/user',
+    name: 'UserView',
+    component: UserView
   },
   {
     path: '/about',
