@@ -1,56 +1,34 @@
 <template>
-  <v-container class="fill-height" fluid>
+  <v-container class="fill-height user-container" fluid>
     <v-row align="center" justify="center">
-      <v-col cols="12" md="6">
-        <v-card elevation="8" class="pa-5 rounded-lg">
-          <v-card-title class="text-h5 font-weight-bold text-center">
+      <v-col cols="12" sm="8" md="4">
+        <v-card class="pa-6 rounded-xl user-card" elevation="6">
+          <v-card-title class="text-h6 font-weight-bold user-title">
             Informacije o korisniku
           </v-card-title>
-          <v-divider class="mb-4"></v-divider>
-          <v-card-text>
-            <v-list dense>
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title>
-                    <strong>Ime i Prezime:</strong> {{ trenutniKorisnik.ime }} {{ trenutniKorisnik.prezime }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title>
-                    <strong>Email:</strong> {{ trenutniKorisnik.email }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title>
-                    <strong>Broj Telefona:</strong> {{ trenutniKorisnik.brojTelefona }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
+          <v-divider class="my-2"></v-divider>
+          <v-card-text class="text-body-1 user-info">
+            <div><strong>Ime i Prezime:</strong> {{ ime }} {{ prezime }}</div>
+            <div><strong>Email:</strong> {{ email }}</div>
+            <div><strong>Broj Telefona:</strong> {{ telefon }}</div>
           </v-card-text>
         </v-card>
-      </v-col>
-      <v-col cols="12" md="6">
-        <v-card elevation="8" class="pa-5 rounded-lg">
-          <v-card-title class="text-h5 font-weight-bold text-center">
+        <v-card class="pa-4 mt-6 rounded-xl past-res-card" elevation="4">
+          <v-card-title class="text-subtitle-1 font-weight-medium">
             Prošle rezervacije
           </v-card-title>
-          <v-divider class="mb-4"></v-divider>
-          <v-card-actions class="justify-center">
+          <v-card-actions class="justify-center mt-2">
             <v-btn
-              color="red darken-1"
-              dark
-              rounded
-              large
-              @click="click">
+              color="red-darken-2"
+              variant="flat"
+              class="px-6"
+              @click="novaRezervacija"
+            >
               Nova rezervacija
             </v-btn>
           </v-card-actions>
         </v-card>
+
       </v-col>
     </v-row>
   </v-container>
@@ -58,24 +36,51 @@
 
 <script>
 export default {
-  name: 'UserView',
-  data() {
+  name: "UserView",
+  data() { 
     return {
-      /* work in progress*/
+      ime: "Patrik",
+      prezime: "Tovernić Obšivač",
+      email: "pobsivac@unipu.hr",
+      telefon: "+385 098 351 583"
     };
   },
   methods: {
-    click() {
-      this.$router.replace({ name: 'BookingView' });
-    },
-  },
+    novaRezervacija() {
+      this.$router.push("/booking");
+    }
+  }
 };
 </script>
 
 <style scoped>
-.v-container {
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+.user-container {
   min-height: 100vh;
-  padding-top: 40px;
+}
+
+.user-card {
+  background-color: #fdfdfd;
+  text-align: center;
+}
+
+.user-title {
+  color: #555;
+  text-align: center;
+}
+
+.user-info {
+  color: #444;
+  line-height: 1.8;
+}
+
+.past-res-card {
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.v-btn {
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: none;
 }
 </style>
