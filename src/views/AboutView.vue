@@ -8,7 +8,7 @@
             class="glass-card pa-5"
             elevation="10">
             <v-card-title class="headline font-weight-bold mb-4">
-              O nama
+              O aplikaciji
             </v-card-title>
             <v-card-text class="body-1">
               <p>
@@ -32,7 +32,6 @@
                 uvijek je dostupan za odgovore na Vaša pitanja.
               </p>
             </v-card-text>
-
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="primary" outlined to="/">

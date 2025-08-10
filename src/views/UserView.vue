@@ -19,7 +19,7 @@
           </v-card-title>
           <v-card-actions class="justify-center mt-2">
             <v-btn
-              color="red-darken-2"
+              color="#b44545"
               variant="flat"
               class="px-6"
               @click="novaRezervacija"
@@ -66,6 +66,8 @@ export default {
 .user-title {
   color: #555;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .user-info {

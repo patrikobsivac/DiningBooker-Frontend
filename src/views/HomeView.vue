@@ -60,12 +60,12 @@ export default {
       {
         id: 1,
         foodName: "Obavijest",
-        imageUrl: "https://static.vecteezy.com/system/resources/previews/001/760/457/non_2x/megaphone-loudspeaker-making-announcement-vector.jpg"
+        imageUrl: "https://static.thenounproject.com/png/4868354-200.png"
       },
       {
         id: 2,
-        foodName: "Radno vrijeme",
-        imageUrl: "https://cdn-icons-png.flaticon.com/512/4305/4305432.png"
+        foodName: "Bookiraj Stol",
+        imageUrl: "https://cdn-icons-png.flaticon.com/512/4813/4813181.png"
       },
       {
         id: 3,
@@ -82,10 +82,10 @@ export default {
     goToPage(foodName) {
       switch (foodName) {
         case "Obavijest":
-          this.$router.push("#");
-          break;
-        case "Radno vrijeme":
           this.$router.push("/radnovrijeme");
+          break;
+        case "Bookiraj Stol":
+          this.$router.push("/booking");
           break;
         case "Jelovnik":
           this.$router.push("#");

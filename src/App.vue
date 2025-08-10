@@ -12,7 +12,7 @@
       <v-spacer />
       <div class="d-flex align-center">
         <v-btn text class="pa-3" color="grey lighten-6" to="/about">
-          O nama
+          O aplikaciji
         </v-btn>
         <v-btn text class="pa-3" color="grey lighten-6" to="/login" v-if="!isUserAuthenticated">
           Login
