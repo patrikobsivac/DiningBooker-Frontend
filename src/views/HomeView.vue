@@ -88,7 +88,7 @@ export default {
           this.$router.push("/booking");
           break;
         case "Jelovnik":
-          this.$router.push("#");
+          this.$router.push("/menu");
           break;
         default:
           console.warn("Nepoznato:", foodName);

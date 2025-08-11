@@ -6,6 +6,7 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import UserView from '../views/UserView.vue'
 import BookingView from '../views/BookingView.vue'
+import MenuView from '../views/MenuView.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -38,6 +39,11 @@ const routes = [
     path: '/booking',
     name: 'BookingView',
     component: BookingView
+  },
+    {
+    path: '/menu',
+    name: 'MenuView',
+    component: MenuView
   },
   {
     path: '/about',
