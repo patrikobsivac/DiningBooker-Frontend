@@ -1,50 +1,33 @@
 <template>
   <v-container>
     <div style="text-align: center;">
-    <h1 class="welcome-title">Dobrodošli!</h1>
+      <h1 class="welcome-title">Dobrodošli!</h1>
     </div>
     <div class="welcome-line"></div>
-    <br>
-    <v-row>
-      <v-col cols="12" md="6" v-for="food in foods.slice(0, 2)" :key="food.id" class="pa-3">
+
+    <br><br>
+    <v-row justify="center" class="mt-10">
+      <v-col
+        cols="12"
+        sm="6"
+        md="4"
+        v-for="food in foods"
+        :key="food.id"
+        class="pa-3"
+      >
         <v-card
           class="mx-auto hoverable-card rounded-lg card-bg fade-in-up"
-          max-width="350"
+          max-width="250"
           elevation="6"
           @click="goToPage(food.foodName)"
           ripple
         >
-          <v-img 
-            :src="food.imageUrl" 
-            height="180px" 
+          <v-img
+            :src="food.imageUrl"
+            height="140px"
             class="image-border"
           />
           <v-card-title class="text-center-card">{{ food.foodName }}</v-card-title>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row justify="center">
-      <v-col cols="12" md="6" class="pa-3">
-        <v-card
-          class="mx-auto hoverable-card rounded-lg card-bg fade-in-up"
-          style="animation-delay: 0.4s;"
-          max-width="350"
-          elevation="6"
-          @click="goToPage(foods[2].foodName)"
-          ripple
-        >
-          <v-img 
-            :src="foods[2].imageUrl" 
-            height="180px" 
-            class="image-border"
-          />
-          <v-card-title class="text-center-card">{{ foods[2].foodName }}</v-card-title>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -82,7 +65,7 @@ export default {
     goToPage(foodName) {
       switch (foodName) {
         case "Obavijest":
-          this.$router.push("/radnovrijeme");
+          this.$router.push("/obavijest");
           break;
         case "Bookiraj Stol":
           this.$router.push("/booking");
@@ -104,6 +87,10 @@ v-container {
   min-height: 100vh;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+.cards-row {
+  margin-top: 80px !important;
 }
 
 .hoverable-card {
@@ -130,7 +117,7 @@ v-container {
   display: flex;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .card-bg {

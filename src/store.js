@@ -1,3 +1,4 @@
+/*
 import { reactive } from "vue";
 
 var bookings = [{}];
@@ -26,3 +27,4 @@ function clearToken() {
 }
 
 export {};
+*/

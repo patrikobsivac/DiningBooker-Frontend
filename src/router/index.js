@@ -26,7 +26,7 @@ const routes = [
     component: RegisterView
   },
   {
-    path: '/radnovrijeme',
+    path: '/obavijest',
     name: 'AlertView',
     component: AlertView
   },
