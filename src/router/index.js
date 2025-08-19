@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import WorkingHoursView from '../views/WorkingHoursView.vue'
+import AlertView from '../views/AlertView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import UserView from '../views/UserView.vue'
@@ -27,8 +27,8 @@ const routes = [
   },
   {
     path: '/radnovrijeme',
-    name: 'WorkingHoursView',
-    component: WorkingHoursView
+    name: 'AlertView',
+    component: AlertView
   },
   {
     path: '/user',
