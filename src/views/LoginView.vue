@@ -98,6 +98,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
 	name: 'LoginPage',
 	data() {
@@ -120,12 +121,40 @@ export default {
 		};
 	},
 	methods: {
-		submitLogin() {
-			alert(`Prijava s email: ${this.userEmail}, lozinka: ${this.userPassword}`);
-			this.$router.push("/"); 
+		async submitLogin() {
+			if (!this.isValid) return;
+
+			try {
+				const response = await axios.post("#", {
+					email: this.userEmail,
+					password: this.userPassword
+				});
+
+				if (response.data.success) {
+					localStorage.setItem("authToken", response.data.token);
+					this.$toast.success("Prijava uspješna!");
+					this.$router.push("/"); 
+				} else {
+					this.$toast.error(response.data.message || "Neuspješna prijava!");
+				}
+			} catch (error) {
+				console.error(error);
+				this.$toast.error("Greška pri prijavi!");
+			}
 		},
-		sendResetLink(email) {
-			alert(`Reset lozinke za email: ${email}`);
+		async sendResetLink(email) {
+			try {
+				const response = await axios.post("#", { email });
+
+				if (response.data.success) {
+					this.$toast.success("Link za reset lozinke poslan!");
+				} else {
+					this.$toast.error(response.data.message || "Neuspješan reset!");
+				}
+			} catch (error) {
+				console.error(error);
+				this.$toast.error("Greška pri resetu lozinke!");
+			}
 			this.closePasswordDialog();
 		},
 		togglePasswordVisibility() {

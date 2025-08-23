@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
 	name: "RegisterView",
 	data() {
@@ -80,16 +81,25 @@ export default {
 			this.email = null;
 			this.password = null;
 		},
-		postActionMoveToView() {
-			this.$router.push({ path: "/" });
-		},
-		registerUser() {
-			console.log("Registracija korisnika:", {
-				email: this.email,
-				password: this.password
-			});
-			this.postActionMoveToView();
-		},
+async registerUser() {
+  if (!this.valid) return;
+  try {
+    const response = await axios.post("#", {
+      email: this.email,
+      password: this.password
+    });
+
+    if (response.data.success) {
+      this.$toast.success("Registracija uspješna! Prijavite se.");
+      this.$router.push("/login");
+    } else {
+      this.$toast.error(response.data.message || "Došlo je do greške");
+    }
+  } catch (error) {
+    console.error(error);
+    this.$toast.error("Greška pri registraciji!");
+  }
+},
 		togglePasswordVisibility() {
 			this.showIcon = !this.showIcon;
 		},
