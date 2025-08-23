@@ -35,21 +35,45 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "UserView",
-  data() { 
+  data() {
     return {
-      ime: "Patrik",
-      prezime: "Tovernić Obšivač",
-      email: "pobsivac@unipu.hr",
-      telefon: "+385 098 351 583"
+      currentUser: {},          
+      pastBookings: [],     
+      futureBookings: [],   
     };
   },
+  created() {
+    this.loadUserData();
+  },
   methods: {
+    async loadUserData() {
+      try {
+        const userData = localStorage.getItem("currentUser");
+        if (userData) {
+          this.currentUser = JSON.parse(userData);
+          const response = await axios.get(`#`);
+
+          const today = new Date();
+          this.pastReservations = response.data.filter(
+            (res) => new Date(res.datum) < today
+          );
+          this.futureReservations = response.data.filter(
+            (res) => new Date(res.datum) >= today
+          );
+        } else {
+          this.$router.push("/login");
+        }
+      } catch (error) {
+        console.error("Greška pri dohvaćanju korisničkih podataka ili rezervacija:", error);
+      }
+    },
     novaRezervacija() {
       this.$router.push("/booking");
-    }
-  }
+    },
+  },
 };
 </script>
 
