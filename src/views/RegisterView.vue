@@ -64,6 +64,10 @@
             </v-btn>
           </v-card-actions>
         </v-card>
+        <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000">
+          {{ snackbarMessage }}
+        </v-snackbar>
+
       </v-col>
     </v-row>
   </v-container>
@@ -84,6 +88,9 @@ export default {
       email: null,
       password: null,
       showIcon: false,
+      snackbar: false,
+      snackbarMessage: "",
+      snackbarColor: "success",
       rules: {
         required: (value) => !!value || "Ovo polje je obavezno",
         min: (v) => v?.length >= 4 || "Zaporka mora imati najmanje 4 znakova!",
@@ -107,11 +114,14 @@ export default {
       this.email = null;
       this.password = null;
     },
+    togglePasswordVisibility() {
+      this.showIcon = !this.showIcon;
+    },
     async registerUser() {
       if (!this.valid) return;
 
       try {
-        await axios.post("http://localhost:3000/register", {
+        const response = await axios.post("http://localhost:3000/register", {
           firstName: this.firstName,
           lastName: this.lastName,
           phoneNumber: this.phoneNumber,
@@ -119,15 +129,19 @@ export default {
           password: this.password,
         });
 
-        this.$toast.success("Registracija uspješna! Prijavite se.");
-        this.$router.push("/login");
+        this.snackbarMessage = response.data?.message || "Registracija uspješna!";
+        this.snackbarColor = "success";
+        this.snackbar = true;
+
+        setTimeout(() => {
+          this.$router.push("/login");
+        }, 1500);
       } catch (error) {
         console.error(error);
-        this.$toast.error(error.response?.data?.error || "Greška pri registraciji!");
+        this.snackbarMessage = error.response?.data?.error || "Greška pri registraciji!";
+        this.snackbarColor = "error";
+        this.snackbar = true;
       }
-    },
-    togglePasswordVisibility() {
-      this.showIcon = !this.showIcon;
     },
   },
 };

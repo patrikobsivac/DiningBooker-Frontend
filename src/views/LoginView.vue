@@ -59,8 +59,6 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-
-        <!-- Dialog za reset lozinke -->
         <v-dialog width="350px" persistent v-model="passwordResetDialog">
           <v-card>
             <v-card-title>Resetiraj Lozinku</v-card-title>
@@ -93,6 +91,9 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
+        <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000" top right>
+          {{ snackbarMessage }}
+        </v-snackbar>
       </v-col>
     </v-row>
   </v-container>
@@ -111,6 +112,9 @@ export default {
       userEmail: null,
       userPassword: null,
       togglePassword: false,
+      snackbar: false,
+      snackbarMessage: "",
+      snackbarColor: "success",
       fieldRules: {
         required: (value) => !!value || "Ovo polje je obavezno",
         minLength: (v) => v?.length >= 4 || "Lozinka mora imati najmanje 4 znakova",
@@ -132,20 +136,35 @@ export default {
         });
 
         localStorage.setItem("authToken", response.data.token);
-        this.$toast.success("Prijava uspješna!");
-        this.$router.push("/");
+        localStorage.setItem("currentUser", JSON.stringify(response.data.user));
+
+        this.snackbarMessage = "Prijava uspješna!";
+        this.snackbarColor = "success";
+        this.snackbar = true;
+
+       setTimeout(() => {
+      this.$router.push("/").then(() => {
+        window.location.reload();
+      });
+        }, 1500);
       } catch (error) {
         console.error(error);
-        this.$toast.error(error.response?.data?.error || "Greška pri prijavi!");
+        this.snackbarMessage = error.response?.data?.error || "Greška pri prijavi!";
+        this.snackbarColor = "error";
+        this.snackbar = true;
       }
     },
     async sendResetLink(email) {
       try {
         await axios.post("http://localhost:3000/changePass", { email });
-        this.$toast.success("Link za reset lozinke poslan!");
+        this.snackbarMessage = "Link za reset lozinke poslan!";
+        this.snackbarColor = "success";
+        this.snackbar = true;
       } catch (error) {
         console.error(error);
-        this.$toast.error("Greška pri resetu lozinke!");
+        this.snackbarMessage = "Greška pri resetu lozinke!";
+        this.snackbarColor = "error";
+        this.snackbar = true;
       }
       this.closePasswordDialog();
     },

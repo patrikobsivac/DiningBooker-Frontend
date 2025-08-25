@@ -20,11 +20,18 @@
         <v-btn text class="pa-3" color="grey lighten-6" to="/register" v-if="!isUserAuthenticated">
           Register
         </v-btn>
-        <v-btn text class="pa-3" color="red lighten-8" v-else @click="handleLogout" href="/">
-          Logout
-        </v-btn>
+
+        <template v-else>
+          <v-btn text class="pa-3" color="grey lighten-6" to="/user">
+            {{ currentUser.firstName }} {{ currentUser.lastName }}
+          </v-btn>
+          <v-btn text class="pa-3" color="red lighten-8" @click="handleLogout">
+            Logout
+          </v-btn>
+        </template>
       </div>
     </v-app-bar>
+
     <v-main>
       <router-view/>
     </v-main>
@@ -33,12 +40,32 @@
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
-
-    }
-  }
+      currentUser: null,
+    };
+  },
+  computed: {
+    isUserAuthenticated() {
+      return !!this.currentUser;
+    },
+  },
+  created() {
+    const userData = localStorage.getItem("currentUser");
+    if (userData) this.currentUser = JSON.parse(userData);
+  },
+  methods: {
+    handleLogout() {
+      localStorage.removeItem("currentUser");
+      this.currentUser = null;
+      window.location.reload();
+    },
+    updateCurrentUser(user) {
+      this.currentUser = user;
+      this.$router.go(0); 
+    },
+  },
 };
 </script>
 
