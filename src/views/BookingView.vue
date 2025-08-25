@@ -26,7 +26,7 @@
             </v-menu>
             <v-textarea v-model="napomena" label="Napomena (opcionalno)" placeholder="Unesite napomenu" auto-grow variant="outlined" class="mt-3"></v-textarea>
             <v-btn block class="mt-6 booking-btn" color="#b44545" dark size="large" elevation="4" @click="submitBooking">
-              Potvrdi rezervaciju
+              Bookiraj
             </v-btn>
           </v-form>
         </v-card>
@@ -75,11 +75,10 @@ export default {
           brojGostiju: Number(this.brojGostiju),
           napomena: this.napomena,
         });
-
-        alert("Rezervacija uspješna!");
         this.ime = this.prezime = this.email = this.telefon = this.napomena = "";
         this.brojGostiju = 1;
         this.datum = null;
+        this.$router.push("/user");
       } catch (err) {
         console.error(err);
         alert(err.response?.data?.message || "Došlo je do greške pri rezervaciji!");

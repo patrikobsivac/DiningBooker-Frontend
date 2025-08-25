@@ -11,14 +11,20 @@
             <v-tab @click="updateCategory('prilozi')">Prilozi</v-tab>
             <v-tab @click="updateCategory('deserti')">Deserti</v-tab>
           </v-tabs>
-          <v-row>
-            <v-col v-for="item in filteredMenuItems" :key="item._id" cols="12" sm="6" md="4">
-              <v-card class="pa-4 rounded-xl booking-card" elevation="4">
-                <v-card-title class="text-h6">{{ item.name }}</v-card-title>
-                <v-card-subtitle class="text-subtitle-1">{{ item.price }}€</v-card-subtitle>
-              </v-card>
-            </v-col>
-          </v-row>
+          <div class="menu-row">
+            <v-row class="flex-nowrap" dense>
+              <v-col v-for="item in filteredMenuItems" :key="item._id" cols="12" sm="6" md="4" class="d-inline-block">
+                <v-card class="pa-4 rounded-xl booking-card menu-card" elevation="4">
+                  <v-img v-if="item.image" :src="item.image" height="150" class="mb-3" contain></v-img>
+                  <v-card-title class="text-h6">{{ item.name }}</v-card-title>
+                  <v-card-subtitle class="text-subtitle-1">{{ item.price }}€</v-card-subtitle>
+                  <v-btn color="#b44545" class="mt-2 white--text" @click="addToOrder(item)">
+                    Dodaj u narudžbu
+                  </v-btn>
+                </v-card>
+              </v-col>
+            </v-row>
+          </div>
         </v-card>
       </v-col>
     </v-row>
@@ -55,19 +61,24 @@ export default {
         console.error("Greška pri dohvaćanju menija:", error);
       }
     },
+    addToOrder(item) {
+      console.log("Dodano u narudžbu:", item);
+      alert(`Dodano: ${item.name}`);
+    },
   },
 };
 </script>
 
 <style scoped>
-.booking-container {
-  min-height: auto; 
-}
-
 .booking-card {
   background-color: #fdfdfd;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+.booking-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(180, 69, 69, 0.3);
 }
 
 .booking-title {
@@ -90,5 +101,20 @@ export default {
 
 .mt-6 {
   margin-top: 24px;
+}
+
+.menu-row {
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+.menu-row::-webkit-scrollbar {
+  height: 6px;
+}
+.menu-row::-webkit-scrollbar-thumb {
+  background-color: #b44545;
+  border-radius: 3px;
+}
+.menu-card {
+  min-width: 250px;
 }
 </style>
