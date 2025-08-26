@@ -20,7 +20,6 @@
         <v-btn text class="pa-3" color="grey lighten-6" to="/register" v-if="!isUserAuthenticated">
           Register
         </v-btn>
-
         <template v-else>
           <v-btn text class="pa-3" color="grey lighten-6" to="/user">
             {{ currentUser.firstName }} {{ currentUser.lastName }}
@@ -31,7 +30,6 @@
         </template>
       </div>
     </v-app-bar>
-
     <v-main>
       <router-view/>
     </v-main>

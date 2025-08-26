@@ -1,34 +1,19 @@
 <template>
-  <v-container fluid>
-    <v-row align="start" justify="center" class="mt-6">
-      <v-col cols="12" sm="10" md="8">
-        <v-card class="pa-8 rounded-xl booking-card" elevation="8">
-          <v-card-title class="text-center text-h5 font-weight-bold booking-title">
-            Jelovnik
-          </v-card-title>
-          <v-tabs v-model="tab" background-color="#E0E0E0" dark color="blue accent-3" slider-color="blue" class="mb-5" justify="center">
-            <v-tab @click="updateCategory('pizze')">Pizze</v-tab>
-            <v-tab @click="updateCategory('prilozi')">Prilozi</v-tab>
-            <v-tab @click="updateCategory('deserti')">Deserti</v-tab>
-          </v-tabs>
-          <div class="menu-row">
-            <v-row class="flex-nowrap" dense>
-              <v-col v-for="item in filteredMenuItems" :key="item._id" cols="12" sm="6" md="4" class="d-inline-block">
-                <v-card class="pa-4 rounded-xl booking-card menu-card" elevation="4">
-                  <v-img v-if="item.image" :src="item.image" height="150" class="mb-3" contain></v-img>
-                  <v-card-title class="text-h6">{{ item.name }}</v-card-title>
-                  <v-card-subtitle class="text-subtitle-1">{{ item.price }}€</v-card-subtitle>
-                  <v-btn color="#b44545" class="mt-2 white--text" @click="addToOrder(item)">
-                    Dodaj u narudžbu
-                  </v-btn>
-                </v-card>
-              </v-col>
-            </v-row>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="menu">
+    <h2>Jelovnik</h2>
+    <div class="tab-buttons">
+      <button v-for="category in categories" :key="category"  @click="selectCategory(category)" :class="{ active: selectedCategory === category }">{{ category }}</button>
+    </div>
+    <div v-if="selectedCategoryItems.length > 0" class="menu-items">
+      <div v-for="item in selectedCategoryItems" :key="item._id" class="menu-item">
+        <h3>{{ item.name }}</h3>
+        <p class="price">{{ item.price }}€</p>
+      </div>
+    </div>
+    <div v-else>
+      <p>Nema dostupnih stavki u ovoj kategoriji.</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -37,84 +22,100 @@ export default {
   name: "MenuView",
   data() {
     return {
-      tab: "pizze",
-      menuItems: [],
+      selectedCategory: "",
+      menus: [],
     };
   },
   computed: {
-    filteredMenuItems() {
-      return this.menuItems.filter(item => item.category === this.tab);
+    categories() {
+      return [...new Set(this.menus.map((m) => m.category))];
     },
-  },
-  created() {
-    this.fetchMenus();
+    selectedCategoryItems() {
+      return this.menus.filter(
+        (item) => item.category === this.selectedCategory
+      );
+    },
   },
   methods: {
-    updateCategory(category) {
-      this.tab = category;
-    },
     async fetchMenus() {
       try {
         const response = await axios.get("http://localhost:3000/api/menus");
-        this.menuItems = response.data;
-      } catch (error) {
-        console.error("Greška pri dohvaćanju menija:", error);
+        this.menus = response.data;
+        if (this.menus.length > 0) {
+          this.selectedCategory = this.menus[0].category;
+        }
+      } catch (err) {
+        console.error("Greška kod dohvaćanja menija:", err);
       }
     },
-    addToOrder(item) {
-      console.log("Dodano u narudžbu:", item);
-      alert(`Dodano: ${item.name}`);
+    selectCategory(category) {
+      this.selectedCategory = category;
     },
+  },
+  mounted() {
+    this.fetchMenus();
   },
 };
 </script>
 
 <style scoped>
-.booking-card {
-  background-color: #fdfdfd;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: all 0.25s ease;
-}
-.booking-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(180, 69, 69, 0.3);
+.menu {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #e9e8eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
 }
 
-.booking-title {
-  color: #b44545;
+.tab-buttons {
+  display: flex;
   justify-content: center;
-  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.v-card-title {
-  font-weight: 600;
+.tab-buttons button {
+  cursor: pointer;
+  padding: 10px 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
-.v-card-subtitle {
-  color: #555;
+.tab-buttons button.active {
+  background-color: #0056b3;
 }
 
-.v-tab {
-  text-transform: none;
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
-.mt-6 {
-  margin-top: 24px;
+.menu-item {
+  width: 250px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.menu-row {
-  overflow-x: auto;
-  padding-bottom: 10px;
+.menu-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
-.menu-row::-webkit-scrollbar {
-  height: 6px;
-}
-.menu-row::-webkit-scrollbar-thumb {
-  background-color: #b44545;
-  border-radius: 3px;
-}
-.menu-card {
-  min-width: 250px;
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #007bff;
+  margin: 8px 0;
 }
 </style>
