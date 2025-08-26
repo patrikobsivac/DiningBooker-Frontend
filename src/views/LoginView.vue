@@ -43,7 +43,7 @@
               outlined
               small
               color="teal darken-1"
-              to="/registracija"
+              to="/register"
             >
               Niste registrirani? Kliknite ovdje
             </v-btn>
@@ -91,7 +91,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000" top right>
+        <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000" bottom center>
           {{ snackbarMessage }}
         </v-snackbar>
       </v-col>

@@ -74,10 +74,9 @@
             </v-card>
           </v-col>
         </v-row>
-        <div class="mt-4"><strong>Prosjek ocjena:</strong> {{ averageRating }}</div>
         <v-card-actions class="justify-center mt-2">
           <v-btn color="#b44545" variant="flat" class="px-6 white--text" @click="novaRezervacija">
-            Nova rezervacija
+            Bookiraj novu rezervaciju
           </v-btn>
         </v-card-actions>
         <v-dialog v-model="confirmDeleteDialog" max-width="400">
@@ -92,7 +91,7 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000" top right>
+        <v-snackbar v-model="snackbar" :color="snackbarColor" timeout="3000" bottom center>
           {{ snackbarMessage }}
         </v-snackbar>
       </v-col>
@@ -152,23 +151,6 @@ export default {
     },
     novaRezervacija() {
       this.$router.push("/booking");
-    },
-    async updateBookingRating(bookingId, rating) {
-      try {
-        await axios.post(`http://localhost:3000/api/ratings`, {
-          gostId: this.currentUser._id,
-          ocjena: rating,
-          komentar: "",
-        });
-        this.snackbarMessage = "Ocjena uspješno spremljena!";
-        this.snackbarColor = "success";
-        this.snackbar = true;
-      } catch (err) {
-        console.error(err);
-        this.snackbarMessage = "Greška pri spremanju ocjene!";
-        this.snackbarColor = "error";
-        this.snackbar = true;
-      }
     },
     confirmDeleteBooking(booking) {
       const today = new Date();
