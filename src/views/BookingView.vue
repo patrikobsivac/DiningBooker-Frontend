@@ -90,7 +90,7 @@ export default {
 
 <style scoped>
 .booking-container { 
-  min-height: 100vh; 
+  min-height: 50vh; 
 }
 
 .booking-card { 

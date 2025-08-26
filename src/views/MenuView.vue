@@ -11,7 +11,7 @@
       </div>
     </div>
     <div v-else>
-      <p>Nema dostupnih stavki u ovoj kategoriji.</p>
+      <p class="no-items">Nema dostupnih stavki u ovoj kategoriji.</p>
     </div>
   </div>
 </template>
@@ -59,63 +59,92 @@ export default {
 </script>
 
 <style scoped>
+
 .menu {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 20px auto;
-  padding: 20px;
-  background-color: #e9e8eb;
+  padding: 30px 25px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   text-align: center;
+}
+
+.menu h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
 }
 
 .tab-buttons {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 30px;
 }
 
 .tab-buttons button {
   cursor: pointer;
-  padding: 10px 18px;
+  padding: 12px 24px;
+  background-color: #ffffffcc;
+  color: #333;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tab-buttons button:hover {
   background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  color: #fff;
+  border-color: #1b1b1b;
 }
 
 .tab-buttons button.active {
-  background-color: #0056b3;
+  background-color: #007bff;
+  color: #fff;
+  border-color: #1b1b1b;
 }
 
 .menu-items {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .menu-item {
-  width: 250px;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: white;
+  width: 260px;
+  background: #ffffffda;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid #000000bb;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 
 .menu-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.menu-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .price {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.2rem;
   color: #007bff;
-  margin: 8px 0;
+  margin-top: 5px;
+}
+
+.no-items {
+  color: #666;
+  font-style: italic;
+  margin-top: 20px;
 }
 </style>
