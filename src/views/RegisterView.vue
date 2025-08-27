@@ -121,7 +121,7 @@ export default {
       if (!this.valid) return;
 
       try {
-        const response = await axios.post("http://localhost:3000/register", {
+        const response = await axios.post("https://diningbooker-backend.onrender.com/register", {
           firstName: this.firstName,
           lastName: this.lastName,
           phoneNumber: this.phoneNumber,

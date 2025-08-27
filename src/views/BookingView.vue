@@ -65,7 +65,7 @@ export default {
       const datumString = this.datum instanceof Date ? this.datum.toISOString().split("T")[0] : this.datum;
 
       try {
-        await axios.post("http://localhost:3000/api/bookings", {
+        await axios.post("https://diningbooker-backend.onrender.com/api/bookings", {
           gostId: this.gostId,
           ime: this.ime,
           prezime: this.prezime,

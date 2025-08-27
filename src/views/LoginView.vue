@@ -130,7 +130,7 @@ export default {
       if (!this.isValid) return;
 
       try {
-        const response = await axios.post("http://localhost:3000/login", {
+        const response = await axios.post("https://diningbooker-backend.onrender.com/login", {
           email: this.userEmail,
           password: this.userPassword,
         });
@@ -156,7 +156,7 @@ export default {
     },
     async sendResetLink(email) {
       try {
-        await axios.post("http://localhost:3000/changePass", { email });
+        await axios.post("https://diningbooker-backend.onrender.com/changePass", { email });
         this.snackbarMessage = "Link za reset lozinke poslan!";
         this.snackbarColor = "success";
         this.snackbar = true;

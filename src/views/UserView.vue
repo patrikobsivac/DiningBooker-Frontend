@@ -138,7 +138,7 @@ export default {
         const userData = localStorage.getItem("currentUser");
         if (!userData) return this.$router.push("/login");
         this.currentUser = JSON.parse(userData);
-        const response = await axios.get(`http://localhost:3000/api/bookings/guest/${this.currentUser._id}`);
+        const response = await axios.get(`https://diningbooker-backend.onrender.com/api/bookings/guest/${this.currentUser._id}`);
         const today = new Date();
         this.pastReservations = response.data.filter(res => new Date(res.datum) < today);
         this.futureReservations = response.data.filter(res => new Date(res.datum) >= today);
@@ -165,7 +165,7 @@ export default {
     },
     async deleteBooking() {
       try {
-        await axios.delete(`http://localhost:3000/api/bookings/${this.bookingToDelete._id}`);
+        await axios.delete(`https://diningbooker-backend.onrender.com/api/bookings/${this.bookingToDelete._id}`);
         this.snackbarMessage = "Rezervacija obrisana!";
         this.snackbarColor = "success";
         this.snackbar = true;

@@ -39,7 +39,7 @@ export default {
   methods: {
     async fetchMenus() {
       try {
-        const response = await axios.get("http://localhost:3000/api/menus");
+        const response = await axios.get("https://diningbooker-backend.onrender.com/api/menus");
         this.menus = response.data;
         if (this.menus.length > 0) {
           this.selectedCategory = this.menus[0].category;
@@ -87,7 +87,7 @@ export default {
 .tab-buttons button {
   cursor: pointer;
   padding: 12px 24px;
-  background-color: #ffffffcc;
+  background-color: #e2dedecc;
   color: #333;
   border: 2px solid transparent;
   border-radius: 8px;
@@ -115,7 +115,7 @@ export default {
 }
 
 .menu-item {
-  width: 260px;
+  width: 250px;
   background: #ffffffda;
   border-radius: 14px;
   padding: 20px;
