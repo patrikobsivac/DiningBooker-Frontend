@@ -31,15 +31,7 @@
                       <div><strong>Datum rezervacije:</strong> {{ res.datum }}</div>
                       <div><strong>Broj gostiju:</strong> {{ res.brojGostiju }}</div>
                       <div v-if="res.napomena"><strong>Napomena:</strong> {{ res.napomena }}</div>
-                      <div>
-                        <strong>Ocjena:</strong>
-                        <v-rating
-                          v-model="res.rating"
-                          dense
-                          half-increments
-                          @change="updateBookingRating(res._id, res.rating)"
-                        ></v-rating>
-                      </div>
+                      <div><strong>Ocjena:</strong>  <v-rating v-model="res.rating" dense half-increments @change="updateBookingRating(res._id, res.rating)"></v-rating></div>
                       <div class="text-gray">Prošla rezervacija se ne može obrisati</div>
                     </v-card>
                   </v-col>

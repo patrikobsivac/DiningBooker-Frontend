@@ -75,7 +75,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "RegisterView",
   data() {
@@ -128,7 +127,6 @@ export default {
           email: this.email,
           password: this.password,
         });
-
         this.snackbarMessage = response.data?.message || "Registracija uspješna!";
         this.snackbarColor = "success";
         this.snackbar = true;
